@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>How Vantage Point Studio was built — the guide</title>
+<meta name="description" content="A walkthrough of Vantage Point Studio's signature techniques: a procedural three.js massing model, hover-swap volume morphs, and drawings-first SVG plates." />
+<meta name="theme-color" content="#e6e4df" />
+<meta name="color-scheme" content="light" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@200;300;400&family=Inter:wght@400;500&family=Space+Mono&display=swap" rel="stylesheet" />
+<style>
+:root{--bg:#e6e4df;--paper:#edece7;--ink:#161616;--dim:#5a5a56;--faint:#8f8d87;--sienna:#b5451f;--line:rgba(22,22,22,.12);--max:760px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:"Inter",system-ui,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--sienna);text-decoration:none}a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.wrap{max-width:var(--max);margin:0 auto;padding:clamp(28px,6vw,80px) clamp(18px,5vw,32px)}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:3rem;font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.12em;color:var(--dim)}
+.top a{color:var(--dim)}.top a:hover{color:var(--ink)}
+h1{font-family:"Archivo",sans-serif;font-weight:200;font-size:clamp(2.3rem,6vw,3.8rem);line-height:1.02;margin-bottom:.6rem;letter-spacing:-.03em}
+h1 em{color:var(--sienna);font-style:normal}
+.sub{color:var(--dim);font-size:1.08rem;margin-bottom:3rem;max-width:38rem}
+h2{font-family:"Archivo",sans-serif;font-weight:300;font-size:clamp(1.45rem,3.4vw,1.9rem);margin:2.9rem 0 1rem;letter-spacing:-.02em}
+.ey{font-family:"Space Mono",monospace;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--sienna);display:block;margin-bottom:2.4rem}
+p{color:#3a3a37;margin:1rem 0}
+strong{color:var(--ink);font-weight:500}
+ul{margin:1rem 0 1rem 1.1rem;color:#3a3a37}li{margin:.45rem 0}
+pre{background:var(--paper);border:1px solid var(--line);padding:16px 18px;overflow-x:auto;margin:1.2rem 0;font-family:"Space Mono",monospace;font-size:.78rem;line-height:1.6;color:#2d2d2a}
+code{font-family:"Space Mono",monospace;font-size:.85em;color:var(--sienna)}
+pre code{color:inherit}
+.rule{height:1px;background:var(--line);margin:3rem 0;border:0}
+.back{display:inline-block;margin-top:2.5rem;font-family:"Space Mono",monospace;font-size:.78rem}
+.note{color:var(--faint);font-size:.9rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a href="../">← Vantage Point Studio</a>
+    <span>THE GUIDE · HOW IT WAS BUILT</span>
+  </div>
+
+  <span class="ey">Design showcase · build notes</span>
+  <h1>A building that exists only as <em>volumes.</em></h1>
+  <p class="sub">Vantage Point Studio is an architecture portfolio with no photographs at all.
+    The work is argued the way architects argue it — massing studies and drawings — in one HTML
+    file, one stylesheet, one script, and one three.js scene.</p>
+
+  <h2>The idea</h2>
+  <p>Architecture portfolios lean on photography, which a fictional practice doesn't have. But the
+    tools architects use <em>before</em> photography exist are actually better on the web: a massing
+    model rotates, a plan is an SVG. So the site treats the browser as a drafting table. The hero is
+    an abstract white massing study on warm concrete; the project index is pure typography; and
+    hovering a row rebuilds the model into that project's volumes. Six projects, one scene, zero images.</p>
+
+  <h2>The stack</h2>
+  <ul>
+    <li><strong>Plain HTML/CSS/JS</strong> — no framework, no build. The page is readable with
+      scripts off: a hand-drawn SVG axonometric stands in for the model.</li>
+    <li><strong>three.js 0.160</strong> via an import map and a guarded <code>import('three')</code> —
+      if the import fails, WebGL is missing, or the visitor prefers reduced motion, the SVG stays.</li>
+    <li><strong>Archivo 200–400 / Inter / Space Mono</strong> — a thin refined grotesque for display,
+      a workhorse for body, a mono for coordinates, areas and plate numbers. Facts live in mono
+      everywhere, the way they do on a drawing's title block.</li>
+  </ul>
+
+  <h2>Signature technique — procedural massing + hover-swap morphs</h2>
+  <p>Every project is just an array of volumes — centre, footprint, height, base level — in abstract
+    site units on an 8×8 plot:</p>
+  <pre><code>{ name: 'TERRASSHUSET',
+  vols: [ // [cx, cz, w, d, h, yBase]
+    [0,    0,   4.6, 3.2, .75, 0   ],
+    [0.4,  0.3, 3.6, 2.5, .75, .75 ],
+    [0.85, 0.6, 2.6, 1.9, .75, 1.5 ],   // terraces step up…
+    [1.3,  0.9, 1.6, 1.3, .75, 2.25],
+    [-1.6,-0.9, .75, .75, 3.4, 0   ],   // …around one core
+] }</code></pre>
+  <p>The scene owns a fixed <strong>pool of eight unit cubes</strong>, each with an
+    <code>EdgesGeometry</code> line child so the thin ink edges scale with the box for free.
+    A composition is applied by scaling and positioning the pool — volumes a project doesn't
+    use collapse to zero inside the new footprint:</p>
+  <pre><code>const m = new THREE.Mesh(boxGeo, white);
+m.add(new THREE.LineSegments(edgeGeo, inkLine)); // edges ride along
+m.scale.set(w, h, d);
+m.position.set(cx, yBase + h/2, cz);</code></pre>
+  <p>Hovering (or focusing — keyboard users get the same swap) a row in the index tweens every cube
+    from its current transform to the next composition with a 45&nbsp;ms stagger and a quint-out
+    curve — precise and architectural, nothing bounces:</p>
+  <pre><code>row.addEventListener('pointerenter', () => select(i));
+row.addEventListener('focus',        () => select(i));
+// in the render loop, per cube:
+const k = 1 - Math.pow(1 - t, 5);          // ease-out quint
+m.scale.x = from.sx + (to.sx - from.sx) * k; // …and so on
+</code></pre>
+  <p>The rest of the scene is deliberately cheap: an <strong>orthographic camera</strong> (an
+    axonometric drawing, not a fly-through), a hemisphere + directional light on near-white
+    <code>MeshStandardMaterial</code>, a <strong>contact shadow</strong> that is one
+    radial-gradient canvas texture on a ground plane, and a hairline <code>LineLoop</code> square
+    as the site boundary. A very slow turntable (0.11&nbsp;rad/s) runs until you drag, and the
+    same viewer stays <code>position:sticky</code> beside both the hero and the index, so the
+    model never leaves the page while you read the work.</p>
+
+  <h2>Details that matter</h2>
+  <ul>
+    <li><strong>The fallback is drawn, not apologised for.</strong> No WebGL, failed CDN, or
+      reduced motion → a static SVG axonometric of the same massing language, present in the
+      markup from the first byte.</li>
+    <li><strong>Plates are authored SVG.</strong> Six plans/sections drawn with a five-stroke
+      vocabulary (wall / thin / faint / dashed / poché) plus one convention borrowed from real
+      practice: <span style="color:var(--sienna)">new work is drawn in red</span>. Each plate
+      carries a mono title block, and the gallery is a drag strip — pointer-drag on mouse, native
+      scroll on touch, arrow keys when focused, with a hairline progress rule.</li>
+    <li><strong>Discipline in the renderer.</strong> Device-pixel-ratio capped at 2, the loop pauses
+      when the viewer scrolls off-screen or the tab hides, and geometry, materials, textures and the
+      renderer are disposed on <code>pagehide</code>.</li>
+    <li><strong>Idle rows dim; the active row carries a sienna numeral</strong> — state is opacity,
+      not ornament. Sienna appears exactly four ways on the whole site: kickers, the active index
+      number, north arrows, new-work lines.</li>
+  </ul>
+
+  <h2>Ship it on GitHub Pages</h2>
+  <p>Every path is relative and there is no build step, so deploying is three commands:</p>
+  <pre><code>gh repo create vantage-point-studio --public --source . --push
+gh api --method POST /repos/USER/vantage-point-studio/pages \
+  -f 'source[branch]=main' -f 'source[path]=/'
+# live at https://USER.github.io/vantage-point-studio/ in ~1 min</code></pre>
+  <p>A <code>.nojekyll</code> file keeps Pages from processing the folder. That's the whole deploy.</p>
+
+  <hr class="rule" />
+  <p class="note">Vantage Point Studio is a design-showcase concept — the practice, projects,
+    awards and addresses are fictional. See the repository README for the demo-vs-real map.</p>
+  <a class="back" href="../">← Back to Vantage Point Studio</a>
+</div>
+</body>
+</html>

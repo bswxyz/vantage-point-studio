@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script>document.documentElement.classList.add('js')</script>
+<title>Vantage Point Studio — architecture &amp; urban design</title>
+<meta name="description" content="Vantage Point Studio is a small architecture practice for civic buildings, adaptive reuse and public space. We design the space between buildings. Berlin · Oslo." />
+<meta name="theme-color" content="#e6e4df" />
+<meta name="color-scheme" content="light" />
+<meta property="og:title" content="Vantage Point Studio — architecture &amp; urban design" />
+<meta property="og:description" content="A small practice for civic buildings, adaptive reuse and public space. We design the space between buildings." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@200;300;400&family=Inter:wght@400;500&family=Space+Mono&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./styles.css" />
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+</script>
+</head>
+<body>
+<a class="skip" href="#work">Skip to projects</a>
+
+<header class="nav">
+  <a class="brand" href="./" aria-label="Vantage Point Studio home">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span class="brand-word">Vantage&nbsp;Point</span>
+    <span class="brand-suffix mono">STUDIO</span>
+  </a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="#work">Work</a>
+    <a href="#plates">Plates</a>
+    <a href="#studio">Studio</a>
+    <a href="#contact">Contact</a>
+    <a href="./guide/">Guide</a>
+  </nav>
+</header>
+
+<main>
+  <!-- ============ HERO + PROJECT INDEX share one sticky viewer ============ -->
+  <section class="stage">
+    <div class="stage-left">
+
+      <div class="hero" id="hero">
+        <p class="eyebrow mono reveal">Vantage Point Studio — architecture &amp; urban design</p>
+        <h1 class="hero-title">
+          <span class="line"><span>We design</span></span>
+          <span class="line"><span>the space</span></span>
+          <span class="line"><span>between buildings.</span></span>
+        </h1>
+        <p class="hero-sub reveal">A small practice for civic buildings, adaptive reuse and
+          public space. Fourteen built works in eight cities. Berlin&nbsp;·&nbsp;Oslo.</p>
+        <p class="hero-meta mono reveal">EST. 2014 · 52.5069°N 13.4310°E · 3 SITES CURRENTLY UNDER CONSTRUCTION</p>
+      </div>
+
+      <div class="index-head" id="work">
+        <p class="kicker mono reveal">01 — Selected work</p>
+        <h2 class="reveal">Six projects, <span class="thin">2021–2026.</span><sup class="count mono" aria-hidden="true">06</sup></h2>
+        <p class="index-hint mono reveal" aria-hidden="true">HOVER A ROW — THE STUDY ROTATES TO MATCH</p>
+      </div>
+
+      <ul class="index reveal" aria-label="Project index">
+        <li>
+          <button class="row" type="button" data-i="0" aria-pressed="true">
+            <span class="r-no mono" aria-hidden="true">01</span>
+            <span class="r-name">Halle am Ufer</span>
+            <span class="r-typ">Cultural hall · adaptive reuse</span>
+            <span class="r-city">Berlin</span>
+            <span class="r-year mono">2024</span>
+            <span class="r-status mono">Built</span>
+          </button>
+        </li>
+        <li>
+          <button class="row" type="button" data-i="1" aria-pressed="false">
+            <span class="r-no mono" aria-hidden="true">02</span>
+            <span class="r-name">Terrasshuset</span>
+            <span class="r-typ">Civic library</span>
+            <span class="r-city">Oslo</span>
+            <span class="r-year mono">2023</span>
+            <span class="r-status mono">Built</span>
+          </button>
+        </li>
+        <li>
+          <button class="row" type="button" data-i="2" aria-pressed="false">
+            <span class="r-no mono" aria-hidden="true">03</span>
+            <span class="r-name">Cour Ouverte</span>
+            <span class="r-typ">Public courtyard block</span>
+            <span class="r-city">Lyon</span>
+            <span class="r-year mono">2025</span>
+            <span class="r-status mono">On site</span>
+          </button>
+        </li>
+        <li>
+          <button class="row" type="button" data-i="3" aria-pressed="false">
+            <span class="r-no mono" aria-hidden="true">04</span>
+            <span class="r-name">Stille Kammer</span>
+            <span class="r-typ">Municipal archive</span>
+            <span class="r-city">Leipzig</span>
+            <span class="r-year mono">2022</span>
+            <span class="r-status mono">Built</span>
+          </button>
+        </li>
+        <li>
+          <button class="row" type="button" data-i="4" aria-pressed="false">
+            <span class="r-no mono" aria-hidden="true">05</span>
+            <span class="r-name">Femte Våning</span>
+            <span class="r-typ">Rooftop housing</span>
+            <span class="r-city">Stockholm</span>
+            <span class="r-year mono">2026</span>
+            <span class="r-status mono">1st prize</span>
+          </button>
+        </li>
+        <li>
+          <button class="row" type="button" data-i="5" aria-pressed="false">
+            <span class="r-no mono" aria-hidden="true">06</span>
+            <span class="r-name">Passage 44</span>
+            <span class="r-typ">Market hall renovation</span>
+            <span class="r-city">Rotterdam</span>
+            <span class="r-year mono">2021</span>
+            <span class="r-status mono">Built</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <div class="stage-right">
+      <div class="viewer reveal" id="viewer">
+        <div class="viewer-stage" id="viewerStage" role="img"
+             aria-label="Massing study — abstract white building volumes for the selected project. Drag to rotate.">
+          <!-- Static axonometric drawing: shown without JS / WebGL / with reduced motion -->
+          <svg class="axon" viewBox="0 0 420 420" aria-hidden="true">
+            <defs>
+              <radialGradient id="axsh" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#161616" stop-opacity=".2"/>
+                <stop offset="100%" stop-color="#161616" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <ellipse cx="210" cy="292" rx="150" ry="40" fill="url(#axsh)"/>
+            <path d="M210 131 416.1 250 210 369 3.9 250Z" fill="none" stroke="#161616" stroke-opacity=".22" stroke-width="1"/>
+            <!-- bar -->
+            <path d="M189.4 156.5 307.2 224.5 230.6 268.7 112.8 200.7Z" fill="#f7f5f0" stroke="#161616" stroke-opacity=".5" stroke-width="1"/>
+            <path d="M307.2 224.5 230.6 268.7 230.6 306.1 307.2 261.9Z" fill="#d7d5cd" stroke="#161616" stroke-opacity=".5" stroke-width="1"/>
+            <path d="M230.6 268.7 112.8 200.7 112.8 238.1 230.6 306.1Z" fill="#e6e4dd" stroke="#161616" stroke-opacity=".5" stroke-width="1"/>
+            <!-- upper volume -->
+            <path d="M201.2 156.5 277.7 200.7 227.7 229.6 151.1 185.4Z" fill="#f7f5f0" stroke="#161616" stroke-opacity=".5" stroke-width="1"/>
+            <path d="M277.7 200.7 227.7 229.6 227.7 263.6 277.7 234.7Z" fill="#d7d5cd" stroke="#161616" stroke-opacity=".5" stroke-width="1"/>
+            <path d="M227.7 229.6 151.1 185.4 151.1 219.4 227.7 263.6Z" fill="#e6e4dd" stroke="#161616" stroke-opacity=".5" stroke-width="1"/>
+            <!-- tower -->
+            <path d="M177.6 98.7 207.1 115.7 177.6 132.7 148.2 115.7Z" fill="#f7f5f0" stroke="#161616" stroke-opacity=".5" stroke-width="1"/>
+            <path d="M207.1 115.7 177.6 132.7 177.6 193.9 207.1 176.9Z" fill="#d7d5cd" stroke="#161616" stroke-opacity=".5" stroke-width="1"/>
+            <path d="M177.6 132.7 148.2 115.7 148.2 176.9 177.6 193.9Z" fill="#e6e4dd" stroke="#161616" stroke-opacity=".5" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="viewer-meta mono">
+          <span id="vCaption">STUDY 01 — HALLE AM UFER</span>
+          <span class="v-hint" id="vHint" aria-hidden="true">DRAG TO ROTATE</span>
+        </div>
+        <div class="viewer-facts mono" id="vFacts" aria-live="polite">52.5069°N 13.4310°E · 12,400 M² · 2024 · BUILT</div>
+        <div class="scalebar" aria-hidden="true">
+          <svg viewBox="0 0 132 12" width="132" height="12">
+            <path d="M1 3v6M44 3v6M87 3v6M131 3v6M1 6h130" stroke="#161616" stroke-opacity=".55" stroke-width="1" fill="none"/>
+          </svg>
+          <span class="mono">0&#8194;&#8194;&#8194;&#8194;10&#8194;&#8194;&#8194;20&#8202;M</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PLATES — horizontal drag gallery ============ -->
+  <section class="plates" id="plates">
+    <div class="section-head">
+      <p class="kicker mono reveal">02 — Plates</p>
+      <h2 class="reveal">Drawings first.</h2>
+      <p class="lede reveal">Plans and sections are the argument; renders come later, if at all.
+        Drag the archive, or use the arrow keys.</p>
+    </div>
+
+    <div class="plates-track reveal" id="platesTrack" tabindex="0" role="region"
+         aria-label="Archive of project plates. Scrollable horizontally with arrow keys.">
+
+      <figure class="plate">
+        <svg viewBox="0 0 640 460" role="img" aria-label="Ground plan of Halle am Ufer — a long hall with a hatched courtyard, column grid and entry.">
+          <defs><pattern id="h1" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="7" stroke="#161616" stroke-opacity=".35" stroke-width="1"/></pattern></defs>
+          <rect x="70" y="70" width="440" height="280" class="w"/>
+          <rect x="270" y="140" width="130" height="140" fill="url(#h1)" class="t"/>
+          <path d="M170 70v280M270 70v140M400 70v210M270 280h130M170 210h100" class="t"/>
+          <path d="M470 350v-52a52 52 0 0 0-52 52" class="f"/>
+          <path d="M170 122a32 32 0 0 1 32-32" class="f"/>
+          <g class="f">
+            <circle cx="120" cy="120" r="2.4"/><circle cx="220" cy="120" r="2.4"/><circle cx="320" cy="120" r="2.4"/><circle cx="440" cy="120" r="2.4"/>
+            <circle cx="120" cy="210" r="2.4"/><circle cx="220" cy="210" r="2.4"/><circle cx="440" cy="210" r="2.4"/>
+            <circle cx="120" cy="300" r="2.4"/><circle cx="220" cy="300" r="2.4"/><circle cx="320" cy="300" r="2.4"/><circle cx="440" cy="300" r="2.4"/>
+          </g>
+          <path d="M70 390h440" class="dim"/><path d="M70 384v12M510 384v12" class="dim"/>
+          <text x="272" y="382">86.0 M</text>
+          <text x="292" y="215" text-anchor="middle">COURT</text>
+          <g transform="translate(560,88)"><circle r="16" class="t"/><path d="M0 12V-12l6 8" class="new"/><text y="30" x="-4">N</text></g>
+          <g class="tblock" transform="translate(432,404)">
+            <rect class="tbg" width="178" height="34"/><path d="M0 0h178M0 34h178M0 0v34M178 0v34M0 17h178" class="f"/>
+            <text x="8" y="12">HALLE AM UFER — BERLIN</text>
+            <text x="8" y="29">PL-01 · GROUND PLAN · 1:500</text>
+          </g>
+        </svg>
+        <figcaption class="mono">PL-01 · HALLE AM UFER — GROUND PLAN 1:500</figcaption>
+      </figure>
+
+      <figure class="plate">
+        <svg viewBox="0 0 640 460" role="img" aria-label="Long section of Terrasshuset — four reading terraces stepping down toward the fjord, earth hatched below the ground line.">
+          <defs><pattern id="h2" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="7" stroke="#161616" stroke-opacity=".35" stroke-width="1"/></pattern></defs>
+          <path d="M40 350h560" class="w"/>
+          <rect x="40" y="352" width="560" height="26" fill="url(#h2)"/>
+          <path d="M90 350V128h116v56h116v56h116v56h116v54" class="w"/>
+          <path d="M90 128h116M206 184h116M322 240h116M438 296h116" class="t"/>
+          <path d="M120 350v-192M150 350v-192M236 350v-136M266 350v-136M352 350v-80M382 350v-80M468 350v-24M498 350v-24" class="f"/>
+          <path d="M90 96h116" class="d"/>
+          <g class="dim"><path d="M70 128h12M70 184h12M70 240h12M70 296h12"/></g>
+          <text x="14" y="131">+13.2</text>
+          <text x="14" y="187">+9.9</text>
+          <text x="14" y="243">+6.6</text>
+          <text x="14" y="299">+3.3</text>
+          <text x="14" y="353">±0.0</text>
+          <g class="tblock" transform="translate(432,404)">
+            <rect class="tbg" width="178" height="34"/><path d="M0 0h178M0 34h178M0 0v34M178 0v34M0 17h178" class="f"/>
+            <text x="8" y="12">TERRASSHUSET — OSLO</text>
+            <text x="8" y="29">PL-02 · SECTION A–A · 1:200</text>
+          </g>
+        </svg>
+        <figcaption class="mono">PL-02 · TERRASSHUSET — SECTION A–A 1:200</figcaption>
+      </figure>
+
+      <figure class="plate">
+        <svg viewBox="0 0 640 460" role="img" aria-label="Site plan of Cour Ouverte — four black building bars around a planted courtyard, neighbouring blocks drawn faint.">
+          <g class="f">
+            <rect x="16" y="24" width="130" height="90"/><rect x="16" y="140" width="90" height="150"/>
+            <rect x="500" y="40" width="120" height="120"/><rect x="530" y="190" width="90" height="140"/>
+            <rect x="60" y="330" width="140" height="90"/><rect x="470" y="360" width="130" height="70"/>
+          </g>
+          <path d="M160 20v420M470 20v420" class="f"/>
+          <rect x="200" y="90" width="240" height="34" class="poche"/>
+          <rect x="200" y="300" width="240" height="34" class="poche"/>
+          <rect x="200" y="140" width="34" height="144" class="poche"/>
+          <rect x="406" y="140" width="34" height="122" class="poche"/>
+          <g class="t">
+            <circle cx="290" cy="200" r="17"/><circle cx="350" cy="235" r="13"/><circle cx="378" cy="180" r="10"/><circle cx="262" cy="252" r="10"/>
+          </g>
+          <g class="f"><circle cx="290" cy="200" r="1.6"/><circle cx="350" cy="235" r="1.6"/><circle cx="378" cy="180" r="1.6"/><circle cx="262" cy="252" r="1.6"/></g>
+          <path d="M240 160h160M240 176h160" class="f"/>
+          <text x="284" y="285">COUR</text>
+          <g transform="translate(560,88)"><circle r="16" class="t"/><path d="M0 12V-12l6 8" class="new"/><text y="30" x="-4">N</text></g>
+          <g class="tblock" transform="translate(432,404)">
+            <rect class="tbg" width="178" height="34"/><path d="M0 0h178M0 34h178M0 0v34M178 0v34M0 17h178" class="f"/>
+            <text x="8" y="12">COUR OUVERTE — LYON</text>
+            <text x="8" y="29">PL-03 · SITE PLAN · 1:1000</text>
+          </g>
+        </svg>
+        <figcaption class="mono">PL-03 · COUR OUVERTE — SITE PLAN 1:1000</figcaption>
+      </figure>
+
+      <figure class="plate">
+        <svg viewBox="0 0 640 460" role="img" aria-label="Plan of Stille Kammer — a square archive room lined with dense shelving, beside a reading room with four tables.">
+          <rect x="80" y="70" width="250" height="280" class="w"/>
+          <rect x="330" y="70" width="200" height="280" class="w"/>
+          <g class="t">
+            <path d="M104 100h202M104 124h202M104 148h202M104 172h202M104 196h202M104 220h202M104 244h202M104 268h202M104 292h202M104 316h202"/>
+          </g>
+          <g class="t">
+            <rect x="366" y="120" width="52" height="86"/><rect x="454" y="120" width="52" height="86"/>
+            <rect x="366" y="240" width="52" height="86"/><rect x="454" y="240" width="52" height="86"/>
+          </g>
+          <path d="M330 190v40" class="pw-gap" stroke="#edece7" stroke-width="4"/>
+          <path d="M330 230a40 40 0 0 1 40-40" class="f"/>
+          <path d="M430 350v-30" stroke="#edece7" stroke-width="4"/>
+          <path d="M430 320a30 30 0 0 1 30 30" class="f"/>
+          <text x="150" y="60">ARCHIVE — 210,000 VOLUMES</text>
+          <text x="380" y="60">READING</text>
+          <path d="M80 390h450" class="dim"/><path d="M80 384v12M530 384v12" class="dim"/>
+          <text x="286" y="382">42.5 M</text>
+          <g class="tblock" transform="translate(432,404)">
+            <rect class="tbg" width="178" height="34"/><path d="M0 0h178M0 34h178M0 0v34M178 0v34M0 17h178" class="f"/>
+            <text x="8" y="12">STILLE KAMMER — LEIPZIG</text>
+            <text x="8" y="29">PL-04 · PLAN LEVEL 1 · 1:200</text>
+          </g>
+        </svg>
+        <figcaption class="mono">PL-04 · STILLE KAMMER — PLAN LEVEL 1 1:200</figcaption>
+      </figure>
+
+      <figure class="plate">
+        <svg viewBox="0 0 640 460" role="img" aria-label="Section of Femte Våning — an existing hatched masonry block with the new rooftop housing drawn in red above it.">
+          <defs><pattern id="h5" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="8" stroke="#161616" stroke-opacity=".28" stroke-width="1"/></pattern></defs>
+          <path d="M60 380h520" class="w"/>
+          <rect x="150" y="150" width="320" height="230" fill="url(#h5)" class="t"/>
+          <g class="f">
+            <rect x="180" y="180" width="28" height="40"/><rect x="246" y="180" width="28" height="40"/><rect x="312" y="180" width="28" height="40"/><rect x="378" y="180" width="28" height="40"/>
+            <rect x="180" y="250" width="28" height="40"/><rect x="246" y="250" width="28" height="40"/><rect x="312" y="250" width="28" height="40"/><rect x="378" y="250" width="28" height="40"/>
+            <rect x="180" y="320" width="28" height="40"/><rect x="246" y="320" width="28" height="40"/><rect x="312" y="320" width="28" height="40"/><rect x="378" y="320" width="28" height="40"/>
+          </g>
+          <g class="new">
+            <path d="M170 150v-58h210v58"/>
+            <path d="M170 92l40-26h130l40 26"/>
+            <path d="M212 150v-58M254 150v-58M296 150v-58M338 150v-58"/>
+            <path d="M420 150v-34h34v34"/>
+          </g>
+          <g class="dim"><path d="M496 150h12M496 92h12"/></g>
+          <text x="514" y="153">+16.4</text>
+          <text x="514" y="95">+21.2</text>
+          <text x="514" y="383">±0.0</text>
+          <path d="M150 430h22" class="t"/><text x="180" y="433">EXISTING</text>
+          <path d="M290 430h22" class="new"/><text x="320" y="433">NEW WORK</text>
+          <g class="tblock" transform="translate(432,404)">
+            <rect class="tbg" width="178" height="34"/><path d="M0 0h178M0 34h178M0 0v34M178 0v34M0 17h178" class="f"/>
+            <text x="8" y="12">FEMTE VÅNING — STOCKHOLM</text>
+            <text x="8" y="29">PL-05 · SECTION · 1:200</text>
+          </g>
+        </svg>
+        <figcaption class="mono">PL-05 · FEMTE VÅNING — SECTION 1:200</figcaption>
+      </figure>
+
+      <figure class="plate">
+        <svg viewBox="0 0 640 460" role="img" aria-label="Cross section of Passage 44 — three restored brick vaults on slender columns over market stalls.">
+          <defs><pattern id="h6" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="7" stroke="#161616" stroke-opacity=".35" stroke-width="1"/></pattern></defs>
+          <path d="M50 372h540" class="w"/>
+          <rect x="50" y="374" width="540" height="22" fill="url(#h6)"/>
+          <path d="M90 372V210q90-110 180 0M270 210q90-110 180 0M450 210q90-110 180 0" class="w" transform="translate(0,0)"/>
+          <path d="M90 372V210M270 372V210M450 372V210M630 372V210" class="w"/>
+          <path d="M90 224h180M270 224h180M450 224h180" class="d"/>
+          <g class="f">
+            <circle cx="180" cy="262" r="4"/><circle cx="360" cy="262" r="4"/><circle cx="540" cy="262" r="4"/>
+            <path d="M180 224v34M360 224v34M540 224v34"/>
+          </g>
+          <g class="t">
+            <rect x="126" y="330" width="70" height="42"/><rect x="240" y="330" width="70" height="42"/><rect x="380" y="330" width="70" height="42"/><rect x="494" y="330" width="70" height="42"/>
+          </g>
+          <g class="dim"><path d="M78 372v-262M72 372h12M72 110h12"/></g>
+          <text x="14" y="240">17.6 M</text>
+          <text x="250" y="60">RESTORED VAULTS — 1911</text>
+          <g class="tblock" transform="translate(432,404)">
+            <rect class="tbg" width="178" height="34"/><path d="M0 0h178M0 34h178M0 0v34M178 0v34M0 17h178" class="f"/>
+            <text x="8" y="12">PASSAGE 44 — ROTTERDAM</text>
+            <text x="8" y="29">PL-06 · CROSS SECTION · 1:200</text>
+          </g>
+        </svg>
+        <figcaption class="mono">PL-06 · PASSAGE 44 — CROSS SECTION 1:200</figcaption>
+      </figure>
+    </div>
+    <div class="plates-progress" aria-hidden="true"><span id="platesBar"></span></div>
+  </section>
+
+  <!-- ============ STUDIO ============ -->
+  <section class="studio" id="studio">
+    <div class="section-head">
+      <p class="kicker mono reveal">03 — Studio</p>
+    </div>
+    <p class="manifesto reveal">Architecture is the slowest art. We practice it at the speed
+      of cities — carefully, in public, and mostly with buildings that already exist.</p>
+    <p class="team-line reveal">Twenty-three people: architects, urbanists, a landscape
+      designer, and one model-maker who outranks us all.</p>
+
+    <dl class="counters reveal" aria-label="Studio in numbers">
+      <div class="counter"><dt class="mono">Built works</dt><dd><span class="c-num" data-to="14">0</span></dd></div>
+      <div class="counter"><dt class="mono">Competition firsts</dt><dd><span class="c-num" data-to="9" data-pad="2">0</span></dd></div>
+      <div class="counter"><dt class="mono">Public space, m²</dt><dd><span class="c-num" data-to="48000">0</span></dd></div>
+      <div class="counter"><dt class="mono">People</dt><dd><span class="c-num" data-to="23">0</span></dd></div>
+    </dl>
+
+    <ul class="awards mono reveal" aria-label="Recognition">
+      <li><span>2026</span><span>EU Mies Award — nominee, Halle am Ufer</span></li>
+      <li><span>2025</span><span>European Prize for Urban Public Space — shortlist, Cour Ouverte</span></li>
+      <li><span>2023</span><span>Nordic Library Prize — Terrasshuset</span></li>
+      <li><span>2022</span><span>German Architecture Annual — selected, Stille Kammer</span></li>
+    </ul>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="contact" id="contact">
+    <div class="section-head">
+      <p class="kicker mono reveal">04 — Contact</p>
+    </div>
+    <h2 class="contact-line reveal">Commissions, competitions,<br />collaborations.</h2>
+    <a class="contact-mail reveal" href="mailto:studio@vantage-point.studio">studio@vantage-point.studio</a>
+    <div class="addresses mono reveal">
+      <p>KÖPENICKER STR. 48<br />10179 BERLIN<br />52.5069°N 13.4310°E</p>
+      <p>TORGGATA 11<br />0183 OSLO<br />59.9139°N 10.7522°E</p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="foot-top">
+    <span class="foot-brand">Vantage&nbsp;Point&nbsp;Studio</span>
+    <nav class="foot-links" aria-label="Footer">
+      <a href="#work">Work</a><a href="#plates">Plates</a><a href="#studio">Studio</a><a href="#contact">Contact</a><a href="./guide/">Guide</a>
+    </nav>
+  </div>
+  <div class="foot-bottom mono">
+    <span>© 2026 Vantage Point Studio — a design-showcase concept, not a real practice.</span>
+    <span>Designed &amp; built by Fable · <a href="./guide/">How this was built →</a></span>
+  </div>
+</footer>
+
+<script src="./main.js" defer></script>
+</body>
+</html>
