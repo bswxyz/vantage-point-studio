@@ -4,7 +4,7 @@
 
 An architecture & urban-design portfolio with no photography — the work is argued with a
 procedural three.js massing model and authored SVG drawings. The light-theme counterweight in
-the [Fable 25 design showcase](https://bswxyz.github.io/fable-hub/).
+the [Parable 25 design showcase](https://bswxyz.github.io/fable-hub/).
 
 ---
 
@@ -94,5 +94,5 @@ support, and the full responsive / reduced-motion / focus-visible layer.
 
 ## License
 
-[MIT](LICENSE). Design & build by **Fable** (Anthropic's Claude). No photo assets — everything
+[MIT](LICENSE). Design & build by **Parable** (Anthropic's Claude). No photo assets — everything
 on the page is code: WebGL, SVG, and type.
