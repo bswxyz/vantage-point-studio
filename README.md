@@ -1,10 +1,42 @@
-# Vantage Point Studio
+<!-- parable:beautified -->
+<div align="center">
 
-**Live:** https://bswxyz.github.io/vantage-point-studio/ · **Build notes:** https://bswxyz.github.io/vantage-point-studio/guide/
+<h1>Vantage Point</h1>
+
+<p><strong>Architecture portfolio — morphing three.js massing models.</strong></p>
+
+<p>
+  <a href="https://bswxyz.github.io/vantage-point-studio/"><img alt="Live demo" src="https://img.shields.io/badge/demo-live-8b5cf6?style=flat-square&labelColor=1a1a1a"></a>
+  <img alt="Family" src="https://img.shields.io/badge/family-Parable-ec4899?style=flat-square&labelColor=1a1a1a">
+  <img alt="Stack" src="https://img.shields.io/badge/stack-HTML%2FJS-f5a623?style=flat-square&labelColor=1a1a1a">
+  <a href="LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/license-MIT-22c55e?style=flat-square&labelColor=1a1a1a"></a>
+</p>
+
+<p>
+  <a href="https://bswxyz.github.io/vantage-point-studio/"><b>Live demo</b></a>
+  &nbsp;·&nbsp;
+  <a href="https://bswxyz.github.io/vantage-point-studio/guide/">Build notes</a>
+  &nbsp;·&nbsp;
+  <a href="https://parable-three.vercel.app/templates">More templates</a>
+</p>
+
+<a href="https://bswxyz.github.io/vantage-point-studio/">
+  <img src=".github/preview.jpg" alt="Vantage Point — live preview" width="100%">
+</a>
+
+</div>
+
+**Use this template** — copy the source into a new project:
+
+```bash
+npx degit bswxyz/vantage-point-studio my-app
+```
+
+
 
 An architecture & urban-design portfolio with no photography — the work is argued with a
 procedural three.js massing model and authored SVG drawings. The light-theme counterweight in
-the [Parable 25 design showcase](https://bswxyz.github.io/fable-hub/).
+the [Parable 25 design showcase](https://parable-three.vercel.app).
 
 ---
 
@@ -94,5 +126,5 @@ support, and the full responsive / reduced-motion / focus-visible layer.
 
 ## License
 
-[MIT](LICENSE). Design & build by **Parable** (Anthropic's Claude). No photo assets — everything
+[MIT](LICENSE). Design & build by **Parable**. No photo assets — everything
 on the page is code: WebGL, SVG, and type.
